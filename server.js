@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 const express = require('express');
 const path = require('path');
 const app = express();
 const PORT = 2000;
-=======
-  const express = require('express');
-  const path = require('path');
 
-  const app = express();
-  const PORT = 2000;
->>>>>>> c38b369 (bis jetzt)
 
   // Serve the index.html file when the root URL is accessed
   app.get('/', (req, res) => {
@@ -41,9 +34,8 @@ const PORT = 2000;
   // Serve static files from the 'comments' directory
   app.use(express.static(path.join(__dirname, 'comments')));
 
-<<<<<<< HEAD
 // POST endpoint to receive comments
-app.post('/comments', (req, res) => {
+app.post('/post', (req, res) => {
     const { name, comment } = req.body;
 
     // Save the comment in the comments array
@@ -58,23 +50,14 @@ app.get('/showcomments', (res, req) => {
 })
 
 // GET endpoint for comments to show in showcomments.html
-app.get('/comments', (req, res) => {
-=======
-  // POST endpoint to receive comments
-  app.post('/comments', (req, res) => {
-      const { name, comment } = req.body;
+app.get('/get', (req, res) => {
 
-      // Save the comment in the comments array
-      const newComment = { name, comment };
-      comments.push(newComment);
-
-      // Send the saved comment back to client
-      res.json(newComment);
+      //Serves the comments array
+      res.json(comments);
   });
 
     // GET endpoint for comments to show in showcomments.html
   app.get('/comments', (req, res) => {
->>>>>>> c38b369 (bis jetzt)
     res.json(comments);
   });
 
@@ -82,3 +65,4 @@ app.get('/comments', (req, res) => {
   app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
   });
+
