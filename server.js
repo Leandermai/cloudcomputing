@@ -34,13 +34,13 @@ let comments = [];
 app.use(express.json());
 
 //Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'showcomments')));
 
 //Post endpoint to receive comments
-app.post('/comments', (req, res) => {
+app.post('/showcomments', (req, res) => {
     const { name, comment } = req.body;
 
-    //Save the comment in the comments adday
+    //Save the comment in the comments array
     const newComment = { name, comment };
     comments.push(newComment);
 
@@ -55,7 +55,7 @@ app.get('/comments', (req, res) => {
 
 //Serve showcomments.html when the user nav to showcomments
 app.get('/showcomments', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'showcomments.html'))
+  res.sendFile(path.join(__dirname, 'comments', 'showcomments'))
 });
 
 
