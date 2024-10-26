@@ -1,4 +1,3 @@
-const exp = require('constants');
 const express = require('express');
 const path = require('path');
 
@@ -11,53 +10,46 @@ app.get('/', (req, res) => {
 });
 
 // Serve the comments.html file 
-app.get('comments', (req, res) => {
-    res.sendFile(path.join(__dirname, 'comments'));
+app.get('/comments', (req, res) => {
+    res.sendFile(path.join(__dirname, 'comments.html'));
 });
 
 // Serve the showcomments.html file
-app.get('showcomments', (req, res) => {
-    res.sendFile(path.join(__dirname, 'showcomments'));
+app.get('/showcomments', (req, res) => {
+    res.sendFile(path.join(__dirname, 'showcomments.html'));
 });
 
+// Redirect URLs with .html extension to the same path without .html
 app.get('/*.html', (req, res) => {
   const pathWithoutExtension = req.path.slice(0, -5); // removes ".html"
   res.redirect(301, pathWithoutExtension);
 });
 
-
-
-//Array to store the comments
+// Array to store the comments
 let comments = [];
 
-//Middleware to parse JSON data
+// Middleware to parse JSON data
 app.use(express.json());
 
-//Serve static files from the 'comments' directory
+// Serve static files from the 'comments' directory
 app.use(express.static(path.join(__dirname, 'comments')));
 
-//Post endpoint to receive comments
+// POST endpoint to receive comments
 app.post('/showcomments', (req, res) => {
     const { name, comment } = req.body;
 
-    //Save the comment in the comments array
+    // Save the comment in the comments array
     const newComment = { name, comment };
     comments.push(newComment);
 
-    //Send the saved comment back to client
-    res.join(newComment);
+    // Send the saved comment back to client
+    res.json(newComment);
 });
 
-//Get endpoint for comments to show in showcomments.html
-app.get('/comments', (req, res) => {
-    res.join(comments);
+// GET endpoint for comments to show in showcomments.html
+app.get('/getcomments', (req, res) => {
+    res.json(comments);
 });
-
-//Serve showcomments.html when the user nav to showcomments
-app.get('/showcomments', (req, res) => {
-  res.sendFile(path.join(__dirname, 'showcomments.html'))
-});
-
 
 // Start the server
 app.listen(PORT, () => {
