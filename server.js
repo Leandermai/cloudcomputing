@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-
 const app = express();
 const PORT = 2000;
 
@@ -35,16 +34,19 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'comments')));
 
 // POST endpoint to receive comments
-app.post('/showcomments', (req, res) => {
+app.post('/comments', (req, res) => {
     const { name, comment } = req.body;
 
     // Save the comment in the comments array
-    const newComment = { name, comment };
-    comments.push(newComment);
-
-    // Send the saved comment back to client
-    res.json(newComment);
+    const newComment = { name, comment }; //Extract data from reqeust body
+    comments.push(newComment);            //Store new comment in the comments array
+    res.json(newComment);                 //Send the received comment back
 });
+
+//Route to serve the showcomments file
+app.get('/showcomments', (res, req) => {
+  res.sendFile(path.join(__dirname, 'comments', 'showcomments'))
+})
 
 // GET endpoint for comments to show in showcomments.html
 app.get('/comments', (req, res) => {
