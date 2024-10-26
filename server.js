@@ -11,13 +11,13 @@ app.get('/', (req, res) => {
 });
 
 // Serve the comments.html file 
-app.get('/comments', (req, res) => {
-    res.sendFile(path.join(__dirname, 'comments.html'));
+app.get('comments', (req, res) => {
+    res.sendFile(path.join(__dirname, 'comments'));
 });
 
 // Serve the showdcomments.html file
-app.get('/showcomments', (req, res) => {
-    res.sendFile(path.join(__dirname, 'showcomments.html'));
+app.get('showcomments', (req, res) => {
+    res.sendFile(path.join(__dirname, 'showcomments'));
 });
 
 app.get('/*.html', (req, res) => {
@@ -46,6 +46,11 @@ app.post('/comments', (req, res) => {
 
     //Send the saved comment back to client
     res.join(newComment);
+});
+
+//Get endpoint for comments to show in showcomments.html
+app.get('showcomments', (req, res) => {
+    res.join(comments);
 });
 
 // Start the server
