@@ -15,7 +15,7 @@ app.get('comments', (req, res) => {
     res.sendFile(path.join(__dirname, 'comments'));
 });
 
-// Serve the showdcomments.html file
+// Serve the showcomments.html file
 app.get('showcomments', (req, res) => {
     res.sendFile(path.join(__dirname, 'showcomments'));
 });
@@ -33,8 +33,8 @@ let comments = [];
 //Middleware to parse JSON data
 app.use(express.json());
 
-//Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'showcomments')));
+//Serve static files from the 'comments' directory
+app.use(express.static(path.join(__dirname, 'comments')));
 
 //Post endpoint to receive comments
 app.post('/showcomments', (req, res) => {
