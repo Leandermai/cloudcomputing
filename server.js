@@ -20,6 +20,11 @@ app.get('/showcomments', (req, res) => {
     res.sendFile(path.join(__dirname, 'showcomments.html'));
 });
 
+app.get('/*.html', (req, res) => {
+  const pathWithoutExtension = req.path.slice(0, -5); // removes ".html"
+  res.redirect(301, pathWithoutExtension);
+});
+
 
 
 //Array to store the comments
