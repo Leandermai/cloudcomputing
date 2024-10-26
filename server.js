@@ -49,9 +49,15 @@ app.post('/comments', (req, res) => {
 });
 
 //Get endpoint for comments to show in showcomments.html
-app.get('showcomments', (req, res) => {
+app.get('/comments', (req, res) => {
     res.join(comments);
 });
+
+//Serve showcomments.html when the user nav to showcomments
+app.get('/showcomments', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'showcomments.html'))
+});
+
 
 // Start the server
 app.listen(PORT, () => {

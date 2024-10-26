@@ -12,7 +12,25 @@
         <a href="comments.html">Go back to comments</a>
     </nav>
 
-    
+    <script>
+        // Fetch comments from the server and display them in the commentList
+        fetch('/comments')
+            .then(response => response.json())
+            .then(comments => {
+                const commentList = document.getElementById('commentList');
+                
+                // Clear the comment list in case it already contains items
+                commentList.innerHTML = '';
+
+                // Loop through comments and add each to the list
+                comments.forEach(comment => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${comment.name}: ${comment.comment}`;
+                    commentList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching comments:', error));
+    </script> 
 
 
 </body>
