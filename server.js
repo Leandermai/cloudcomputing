@@ -55,7 +55,7 @@ app.get('/comments', (req, res) => {
 
 //Serve showcomments.html when the user nav to showcomments
 app.get('/showcomments', (req, res) => {
-  res.sendFile(path.join(__dirname, 'comments'))
+  res.sendFile(path.join(__dirname, 'showcomments.html'))
 });
 
 
