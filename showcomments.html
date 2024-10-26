@@ -14,9 +14,6 @@
         <a href="comments.html">Go back to comments</a>
     </nav>
 
-    <!-- Button to fetch comments -->
-    <button id="fetchCommentsButton">Fetch Comments</button>
-
     <!-- Section to display comments -->
     <h2>Comments</h2>
     <div id="commentsList"></div> <!-- Use this div to display fetched comments -->
@@ -51,8 +48,7 @@
             .catch(error => console.error('Error fetching comments:', error));
         }
 
-        // Event listener for the fetch comments button
-        document.getElementById('fetchCommentsButton').addEventListener('click', fetchComments);
+        window.onload = fetchComments;
     </script>
 </body>
 </html>
