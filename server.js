@@ -47,7 +47,7 @@ app.post('/showcomments', (req, res) => {
 });
 
 // GET endpoint for comments to show in showcomments.html
-app.get('/getcomments', (req, res) => {
+app.get('/comments', (req, res) => {
     res.json(comments);
 });
 
