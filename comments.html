@@ -12,6 +12,7 @@
         <a href="showcomments.html">See all comments posted</a>
     </nav>
     <h2>Leave comment</h2>
+
         <form id="commentForm">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" required><br><br>
@@ -21,5 +22,42 @@
 
         <button type="submit">Submit</button>
     </form>
+
+    <script>
+        document.getElementById('commentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+
+            // Get the input values
+            const name = document.getElementById('name').value;
+            const comment = document.getElementById('comment').value;
+
+            // Prepare the data to be sent in the request body
+            const data = {
+                name: name,
+                comment: comment
+            };
+
+            // Send data to the server using fetch and POST method
+            fetch('/comments', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the received response from the server
+                document.getElementById('displayName').innerText = `Name: ${data.name}`;
+                document.getElementById('displayComment').innerText = `Comment: ${data.comment}`;
+            })
+            .catch(error => console.error('Error:', error));
+
+            // Clear the form inputs
+            document.getElementById('name').value = '';
+            document.getElementById('comment').value = '';
+        });
+    </script>
+    
 </body>
 </html>
