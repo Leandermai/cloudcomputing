@@ -4,7 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  header {
+    background-color: #323131;
+    padding: 1em 0;
+  }
+  img {
+    width: 30%;
+    height: auto;
+  }
+
+
+  
+  .container {
+    margin-top: 10px;
+    justify-content: center;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    gap: 30px;
+  }
+  
+  .input {
+    border-radius: 300px;
+  }
+ 
+ 
+  input[type="number"] {
+    width: minmax(20px auto);
+  }
+  .output {
+    font-size: 1em;
+    margin-top: 5px;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+  }
+  button:hover {
+    background-color: #218838;
+  }
+
+  img {
+    border-radius: 10px;
+  }
+
+  h1 {
+    position: relative;
+    font-size: 3em;
+    padding: 20px;
+    color: #000000;
+    z-index: 1;
+    font-size: 5vw;
+  }
+  h1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("/pictures/sop.png") no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 10px;
+  }
+  footer {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 300px;
+  }
+  
+    </style>
 </head>
 <body>
     <div class="container" style="background-color: orange;">
@@ -47,7 +140,7 @@
 
 </div>
 <div class="container">
-    <nav style="display: flex; justify-content: space-between; align-items: center;">
+    <nav>
         <a href="/comments.html" style="font-size: 2vw;margin-right: 20px">Lass ein Kommentar da!</a> 
         <a href="/showcomments.html" style="font-size: 2vw;">Alle bisherigen Kommentare</a>
     </nav>
