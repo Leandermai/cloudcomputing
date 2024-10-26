@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
+    <title>Comments</title>
 </head>
 <body>
     <h1>You can leave comments here</h1>
@@ -11,9 +11,9 @@
         <a href="/">Home</a> |
         <a href="showcomments.html">See all comments posted</a>
     </nav>
-    <h2>Leave comment</h2>
+    <h2>Leave a comment</h2>
 
-        <form id="commentForm">
+    <form id="commentForm">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" required><br><br>
 
@@ -22,6 +22,12 @@
 
         <button type="submit">Submit</button>
     </form>
+
+    <h3>Your Submitted Comment:</h3>
+    <div id="submittedComment">
+        <p id="displayName"></p>
+        <p id="displayComment"></p>
+    </div>
 
     <script>
         document.getElementById('commentForm').addEventListener('submit', function(event) {
@@ -58,6 +64,5 @@
             document.getElementById('comment').value = '';
         });
     </script>
-    
 </body>
 </html>

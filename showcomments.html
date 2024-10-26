@@ -3,27 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
+    <title>Show Comments</title>
 </head>
 <body>
+<<<<<<< HEAD
     <h1>All comments</h1>
+=======
+    <h1>All Comments</h1>
+>>>>>>> c38b369 (bis jetzt)
     <nav>
         <a href="/">Home</a> |
         <a href="comments.html">Go back to comments</a>
     </nav>
     <div id="commentList"></div>
 
+    <h2>Comments</h2>
+    <ul id="commentList"></ul>
+
     <script>
-        // Fetch comments from the server and display them in the commentList
         fetch('/comments')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(comments => {
                 const commentList = document.getElementById('commentList');
-                
-                // Clear the comment list in case it already contains items
                 commentList.innerHTML = '';
-
-                // Loop through comments and add each to the list
                 comments.forEach(comment => {
                     const commentDiv = document.createElement('div');
                     commentDiv.className = 'comment';
@@ -32,8 +39,6 @@
                 });
             })
             .catch(error => console.error('Error fetching comments:', error));
-    </script> 
-
-
+    </script>
 </body>
 </html>
